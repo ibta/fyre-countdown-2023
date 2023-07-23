@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Uni Sans Heavy", sans-serif;
+  src: url("assets/uni-sans-heavy");
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Uni Sans Heavy", sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+canvas {
+  display: block;
+}
