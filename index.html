@@ -50,32 +50,37 @@
     <script>
       // create countdown date
       let countDownDate = new Date("Aug 24, 2023 08:00:00").getTime();
-      let countdownfunction = setInterval(() => {
-        // grab current time/date
-        let now = new Date().getTime();
+      function start() {
+        function countDown() {
+          // grab current time/date
+          let now = new Date().getTime();
 
-        // calculate difference between the two dates
-        let distance = countDownDate - now;
+          // calculate difference between the two dates
+          let distance = countDownDate - now;
 
-        // calculate days, hours, minutes and seconds
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          // calculate days, hours, minutes and seconds
+          let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          let hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Display the result in the element with id="countdown"
-        document.getElementById(
-          "countdown"
-        ).innerHTML = `FYRE IN: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+          // Display the result in the element with id="countdown"
+          document.getElementById(
+            "countdown"
+          ).innerHTML = `FYRE IN: ${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-        // If the countdown is finished, write some text
-        if (distance < 0) {
-          clearInterval(countdownfunction);
-          document.getElementById("countdown").innerHTML = "NOW!!";
+          // If the countdown is finished, write some text
+          if (distance < 0) {
+            clearInterval(countdownfunction);
+            document.getElementById("countdown").innerHTML = "FYRE IS NOW!!";
+          }
         }
-      }, 1000);
+        countDown();
+        setInterval(countDown, 1000);
+      }
+      start();
     </script>
 
     <script type="module" src="main.js"></script>
