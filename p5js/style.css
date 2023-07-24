@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Uni Sans Heavy", sans-serif;
+  font-family: "Uni Sans Heavy", sans;
   src: url("assets/uni-sans-heavy");
 }
 
@@ -7,7 +7,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Uni Sans Heavy", sans-serif;
+  font-family: "Uni Sans Heavy", sans;
 }
 
 h1 {

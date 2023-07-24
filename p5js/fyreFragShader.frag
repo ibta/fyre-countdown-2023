@@ -1,6 +1,6 @@
 // original shader: https://www.shadertoy.com/view/DsGGWD
 
-precision mediump float;
+precision lowp float;
 
 uniform vec2 resolution;
 uniform vec2 mouse;
@@ -11,7 +11,7 @@ float rand(float n){return fract(sin(n) * 43758.5453123);}
 
 void main() {
     //vec2 uv = gl_FragCoord.xy / (resolution.xy);
-    vec2 uv = (gl_FragCoord.xy / resolution.xy) * 2.0 - 0.25;
+    vec2 uv = (gl_FragCoord.xy / resolution.xy);
     // uv -= 0.5;
     uv.x *= aspectRatio;
     //vec2 m = (mouse / resolution);
@@ -20,15 +20,13 @@ void main() {
     for(float i = 0.0; i < 32.0; i++){
         float r1 = rand(i);
         float r2 = rand(i*1.3);
-        float speedFactor1 = rand(i*0.5);
-        float speedFactor2 = rand(i*0.5);
         vec2 p = vec2(
-            1.3 * r1 + 0.1 * cos(r1 * (time + speedFactor1 + i) + r1) - (m.x / floor(10.0 + i / 2.0) ),
-            1.3 * r2 + 0.1 * sin(r2 * (time + speedFactor2 + i) + r2) - (m.y / floor(10.0 + i / 2.0) )
+            (2.4 * r1) + (0.1 * cos(r1 * time + r1)) - (m.x / floor(5.+i/10.)*2.),
+            (2.4 * r2) + (0.1 * sin(r2 * time + r2)) - (m.y / floor(5.+i/10.)*2.)
         );
         
         // scale factor of 0.3, distance of the camera
-        float d = distance(uv * 0.25, p);
+        float d = distance(uv, p);
         
         // controls the size (and glow) of lil fireflies
         l += pow(0.0015 / pow(d, 1.1) * (sin(time + i) + 1.0), 1.2) * 0.5 * (1.0 + sin(time + i));
